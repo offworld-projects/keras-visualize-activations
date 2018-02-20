@@ -5,6 +5,18 @@
 
 **-> Works for any kind of model (recurrent, convolutional, residuals...). Not only for images!**
 
+## Now outputs as ROS topics
+### Example usage:
+```
+model = keras.Model(...)
+kerasRos = KerasRos(len(Model.layers))
+layerNames = ['img_input', 'last_activation']
+a = get_activations(self.agent.model, x_test, print_shape_only=True, layer_names=layerNames)
+fullArr, actvs = stack_activations(a)
+kerasRos.pubActvs(fullArr, actvs)
+```
+
+
 ## Example of MNIST
 
 Shapes of the activations (one sample) on Keras CNN MNIST:
